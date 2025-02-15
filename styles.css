@@ -1,0 +1,219 @@
+/* Full screen background */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: transparent; /* Removed background color */
+}
+
+/* Jesus Verse Section */
+.verse-container {
+    position: absolute;
+    top: 20px; /* Position the verse towards the top of the screen */
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Ensures the verse is always on top */
+}
+
+.jesus-verse {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(255, 87, 34, 0.8); /* Vibrant orange background for contrast */
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 80%; /* Adjusted for better readability */
+    margin: 0 auto;
+    font-family: 'Medium 500', sans-serif;
+    text-transform: uppercase; /* Make the text uppercase */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for the text */
+}
+
+/* Full screen background */
+.background {
+    background-image: url('background.jpg'); /* Ensure this image file exists */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;
+    position: relative; /* Make sure it fits to full height */
+}
+
+/* Logo on the left side */
+.logo-container {
+    position: absolute;
+    left: 20px; /* Position logo on the left side */
+    top: 110px; /* Move the logo down by 40px (adjust as needed) */
+}
+
+.logo {
+    width: 150px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Centered Left Login Form */
+.login-container {
+    background-color: transparent; /* Make the background transparent */
+    padding: 25px; /* Added extra padding */
+    border-radius: 8px;
+    width: 320px; /* Slightly wider form */
+    text-align: center;
+    z-index: 2; /* Ensure the login form is above other elements */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* 3D shadow for the form */
+    position: absolute;
+    left: 0.5%; /* Move the login form to the left side */
+    top: calc(7 * 40px); /* Move the login container 3 steps (120px) down */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Heading styling */
+/* Heading styling for Login */
+h2 {
+    margin-bottom: 20px;
+    color: #ff5722; /* Vibrant orange color for the login heading */
+    font-size: 24px; /* Slightly larger for emphasis */
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
+}
+/* Label styling */
+label {
+    font-weight: bold;
+    color: #ff5722; /* Orange color for labels for better visibility */
+    font-size: 16px; /* Increased font size for better readability */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Light shadow on label for contrast */
+}
+
+/* Input and Select Styling */
+select, input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px; /* Rounded corners for a soft look */
+    border: 2px solid #ff5722; /* Lighter orange border */
+    font-size: 14px;
+    background-color: #fff3e0; /* Light background color for input fields */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+}
+
+    input:focus, select:focus {
+        border-color: #ff9800; /* Slightly darker orange when focused */
+        outline: none;
+        background-color: #fff; /* Clean background color when focused */
+        transform: scale(1.02); /* Slightly enlarge on focus for 3D effect */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+    }
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #ff5722; /* Vibrant orange button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth button animation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Button shadow for 3D effect */
+}
+
+    button:hover {
+        background-color: #ff9800; /* Darker orange when hovered */
+        transform: translateY(-4px); /* Lift button slightly when hovered */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow for hover effect */
+    }
+
+    button:active {
+        transform: translateY(2px); /* Subtle "press down" effect */
+    }
+
+/* Styling for paragraph (error, contact message, etc.) */
+p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Contact message at the bottom of the form */
+.contact-message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555; /* Softer color for the message */
+    font-weight: normal;
+    text-align: center;
+}
+
+/* Styling for error message */
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: none; /* Initially hidden */
+}
+
+/* Error message on input field */
+input:invalid {
+    border-color: red;
+}
+
+/* Success message for login */
+.successMessage {
+    color: green;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: none; /* Initially hidden */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%; /* Adjusted width for smaller screens */
+        left: 5%; /* Align to the center horizontally */
+        top: 20%; /* Adjust vertical positioning */
+        padding: 15px; /* Reduced padding for smaller screens */
+    }
+
+    .logo-container {
+        left: 10px; /* Slight adjustment */
+        top: 90px; /* Slight adjustment */
+    }
+
+    .jesus-verse {
+        font-size: 20px; /* Adjusted font size for mobile screens */
+        max-width: 90%; /* Increased max-width */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 95%; /* Full-width form */
+        padding: 10px; /* Further reduced padding */
+        top: 25%; /* Adjust positioning for very small screens */
+    }
+
+    .logo {
+        width: 120px; /* Reduced logo size */
+    }
+
+    .jesus-verse {
+        font-size: 18px; /* Smaller font size for very small screens */
+        padding: 12px; /* Slightly reduced padding */
+    }
+
+    h2 {
+        font-size: 20px; /* Smaller heading for mobile */
+    }
+
+    input, select, button {
+        font-size: 12px; /* Smaller font size for mobile */
+    }
+
+    .contact-message {
+        font-size: 12px; /* Adjusted font size */
+    }
+}

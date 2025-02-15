@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VIP Church Experience</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(45deg, #4CAF50, #2c6e49);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            header h1 {
+                font-size: 48px;
+                margin: 0;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            header p {
+                font-size: 22px;
+                font-weight: lighter;
+                margin-top: 10px;
+            }
+
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            background-color: #333;
+        }
+
+            nav ul li {
+                display: inline-block;
+                margin: 0 20px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    padding: 10px 20px;
+                    transition: all 0.3s ease;
+                    position: relative;
+                }
+
+                    nav ul li a::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 3px;
+                        background-color: #4CAF50;
+                        transform: scaleX(0);
+                        transform-origin: bottom right;
+                        transition: transform 0.3s ease-in-out;
+                    }
+
+                    nav ul li a:hover::after {
+                        transform: scaleX(1);
+                        transform-origin: bottom left;
+                    }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 30px;
+            text-align: center;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+            /* Hover animation for each section */
+            .section:hover {
+                transform: scale(1.02);
+                transition: transform 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        /* Sunday Prayer, Upcoming Events, News */
+        .sunday-prayer, .upcoming-events, .news {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+            .sunday-prayer div, .upcoming-events div, .news div {
+                width: 30%;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                text-align: left;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+                .sunday-prayer div:hover, .upcoming-events div:hover, .news div:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+                }
+
+                .sunday-prayer div h3, .upcoming-events div h3, .news div h3 {
+                    color: #4CAF50;
+                    font-size: 24px;
+                    margin-bottom: 15px;
+                }
+
+                .sunday-prayer div p, .upcoming-events div p, .news div p {
+                    font-size: 18px;
+                    color: #555;
+                    line-height: 1.6;
+                }
+
+        /* Welcome Image Container */
+        .welcome-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Carousel for Image */
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Welcome Image Styling */
+        .welcome-image {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+            .welcome-image:hover {
+                transform: scale(1.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        /* Left and Right Arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 1;
+            font-size: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            animation: fadeIn 0.5s;
+        }
+
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #ddd;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        #caption {
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>YESU KRUPALAYA BADA</h1>
+        <p>Welcome to a place of peace, prayer, and community</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#welcome">Welcome</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Section -->
+    <div id="welcome" class="section welcome">
+        <h2>ನಮ್ಮ ಚರ್ಚ್ ಅನುಭವಕ್ಕೆ ಸುಸ್ವಾಗತ</h2>
+        <p>ಇಂದು ನೀವು ನಮ್ಮೊಂದಿಗೆ ಇರುವುದು ನಮಗೆ ಗೌರವವಾಗಿದೆ. ಈ ಅನುಭವವು ನಿಮ್ಮ ಹೃದಯವನ್ನು ಶಾಂತಿ, ಸಂತೋಷ ಮತ್ತು ಉದ್ದೇಶದಿಂದ ತುಂಬಲಿ.</p>
+        <div class="welcome-images">
+            <div class="carousel">
+                <img src="welcome 1.jpg" alt="Welcome Image 1" class="welcome-image" onclick="openModal(this)">
+                <img src="welcome 2.jpg" alt="Welcome Image 2" class="welcome-image" onclick="openModal(this)">
+                <img src="welcome 3.jpg" alt="Welcome Image 3" class="welcome-image" onclick="openModal(this)">
+                <img src="welcome 4.jpg" alt="Welcome Image 1" class="welcome-image" onclick="openModal(this)">
+                <img src="welcome 5.jpg" alt="Welcome Image 2" class="welcome-image" onclick="openModal(this)">
+                <img src="welcome 6.jpg" alt="Welcome Image 3" class="welcome-image" onclick="openModal(this)">
+            </div>
+            <span class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</span>
+        </div>
+    </div>
+
+    <!-- Sunday Prayer, Upcoming Events, News -->
+    <div class="sunday-prayer section">
+        <div>
+            <h3>Sunday Prayer</h3>
+            <p>Join us every Sunday morning at 9 AM for our community prayer.</p>
+            <p> Sunday Prayer Hosting By Pastor Lukas </p>
+
+        </div>
+        <div>
+            <h3>Upcoming Events</h3>
+            <p> We have an exciting lineup of events. we will update you in soon</p>
+            <p>ನಾವು ಈವೆಂಟ್‌ಗಳ ರೋಚಕ ಶ್ರೇಣಿಯನ್ನು ಹೊಂದಿದ್ದೇವೆ. ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮನ್ನು ನವೀಕರಿಸುತ್ತೇವೆ!</p>
+        </div>
+        <div>
+            <h3>Bible Verse of the Day</h3>
+            <h3> ಈ ದಿನದ ಬೈಬಲ್ ವಾಕ್ಯ</h3>
+            <p> By the sweat of your brow you will eat your food until you return to the ground, since from it you were taken; for dust you are and to dust you will return.” -Genesis 3:19 </p>
+            <p>ನೀನು ಮಣ್ಣಿಗೆ ತಿರುಗುವ ವರೆಗೆ ನಿನ್ನ ಹಣೆಯ ಬೆವರನ್ನು ಸುರಿಸಿ ರೊಟ್ಟಿಯನ್ನು ತಿನ್ನುವಿ. ಯಾಕಂದರೆ ನೀನು ಅದ ರೊಳಗಿಂದ ಅಂದರೆ (ಮಣ್ಣಿನೊಳಗಿಂದ) ತೆಗೆಯ ಲ್ಪಟ್ಟೆ; ನೀನು ಮಣ್ಣಾಗಿದ್ದಿ, ಮಣ್ಣಿಗೆ ತಿರುಗಿಕೊಳ್ಳುವಿ ಅಂದನು. - ಆದಿಕಾಂಡ 3:19.</p>
+        </div>
+        <div>
+            <h3>Church Devlopment Activites</h3>
+            <p> 1. Youths are taken initative to devlop our Church. </p>
+            <p> 2. Service Song list host by here it self (Process is going on).</p>
+            <p> 3. Youth List and church Memebers list update here and it should be visible only, not to be download.</p>
+           
+        </div>
+    </div>
+
+    <!-- Modal (Hidden by default) -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="">
+        <div id="caption"></div>
+    </div>
+
+</body>
+</html>

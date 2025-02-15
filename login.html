@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure this file exists -->
+</head>
+<body>
+    <!-- Jesus Verse Section -->
+    <div class="verse-container">
+        <p class="jesus-verse">"ಯೇಸು ಅವನಿಗೆ - ನಾನೇ ಮಾರ್ಗವೂ ಸತ್ಯವೂ ಜೀವವೂ ಆಗಿದ್ದೇನೆ; ನನ್ನ ಮೂಲಕವಾಗಿ ಹೊರತು ಯಾರೂ ತಂದೆಯ ಬಳಿಗೆ ಬರುವದಿಲ್ಲ.." - ಯೋಹಾನ 14:6</p>
+    </div>
+
+    <div class="background">
+        <!-- Fullscreen background -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Logo centered above login form -->
+        </div>
+
+        <div class="login-container">
+            <!-- Login form container -->
+            <h2>Login</h2>
+
+            <!-- Login Button -->
+            <button id="loginButton">Login</button>
+
+            <!-- Contact message -->
+            <p class="contact-message">For any queries, contact admin.</p>
+        </div>
+    </div>
+
+    <script>
+        // Adding click event to the login button to open a new page or redirect
+        document.getElementById("loginButton").addEventListener("click", function () {
+            // Redirect to the welcome page after clicking the login button
+            window.location.href = "welcome.html";  // Redirects to the welcome page
+        });
+    </script>
+
+</body>
+</html>
